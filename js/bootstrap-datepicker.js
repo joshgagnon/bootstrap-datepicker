@@ -107,6 +107,7 @@
 
 		this.todayBtn = (options.todayBtn||this.element.data('date-today-btn')||false);
 		this.todayHighlight = (options.todayHighlight||this.element.data('date-today-highlight')||false);
+		this.filterDate = (options.filterDate || false);
 
 		this.weekStart = ((options.weekStart||this.element.data('date-weekstart')||dates[this.language].weekStart||0) % 7);
 		this.weekEnd = ((this.weekStart + 6) % 7);
@@ -398,10 +399,13 @@
 					prevMonth.getUTCDate() == today.getDate()) {
 					clsName += ' today';
 				}
+				if(this.filterDate){
+					clasName += ' ' + (this.filterDate(prevMonth) || '');
+				}
 				if (currentDate && prevMonth.valueOf() == currentDate) {
 					clsName += ' active';
 				}
-			
+
 				if (prevMonth.valueOf() < this.startDate || prevMonth.valueOf() > this.endDate ||
 					$.inArray(prevMonth.getUTCDay(), this.daysOfWeekDisabled) !== -1) {
 					clsName += ' disabled';
@@ -928,7 +932,7 @@
 							'<tr>'+
 								'<th class="prev"><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span></th>'+
 								'<th colspan="5" class="switch"></th>'+
-								'<th class="next"<span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></th>'+
+								'<th class="next"><span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></th>'+
 							'</tr>'+
 						'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
