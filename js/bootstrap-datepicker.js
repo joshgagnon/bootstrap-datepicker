@@ -400,7 +400,7 @@
 					clsName += ' today';
 				}
 				if(this.filterDate){
-					className += ' ' + (this.filterDate(prevMonth) || '');
+					clsName += ' ' + (this.filterDate(prevMonth) || '');
 				}
 				if (currentDate && prevMonth.valueOf() == currentDate) {
 					clsName += ' active';
